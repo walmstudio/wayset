@@ -1,0 +1,11 @@
+
+
+[Unit]
+Description=Just enable LED backlight
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/wayset
+
+[Install]
+WantedBy=multi-user.target

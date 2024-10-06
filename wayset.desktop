@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=System;Settings;Utility;
+Encoding=UTF-8
+Name=Wayset
+GenericName=Enable backlight keyboard in Wayland
+GenericName[ru]=Включи подсветку клавиатуры в Wayland
+Terminal=false
+Type=Application
+Exec=env pkexec wayset
+Icon=/usr/share/icons/wayset.png
