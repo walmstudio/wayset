@@ -92,19 +92,9 @@ def on_key_press(event):
             toggle_led_pown()
             sleep(0.05)
     if toggle_key == 'num lock':
-        if enable_led == 0:
-            enable_led = 0
-            sleep(0.05)
-        else:
-            enable_led = 1
-            sleep(0.05)
+        pass
     if toggle_key == 'caps lock':
-        if enable_led == 0:
-            enable_led = 0
-            sleep(0.05)
-        else:
-            enable_led = 1
-            sleep(0.05)
+        pass
 
 kek.on_press(on_key_press)
 
