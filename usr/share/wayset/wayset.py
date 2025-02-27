@@ -6,6 +6,7 @@ import os
 import keyboards
 import keyboard as kek
 from time import sleep
+from importlib import reload
 
 scroll_lock = []
 enable_led = 1
@@ -20,7 +21,7 @@ append_index = keyboards.minimum_led
 
 for i in range(5):
     for i in range(append_index):
-        detect = os.system(f" sh -c 'echo {enable_led} > /sys/class/leds/input{i}::scrolllock/brightness'")
+        detect = os.system(f" sh -c 'echo 1 > /sys/class/leds/input{i}::scrolllock/brightness'")
         if detect == 0:
             if i in scroll_lock:
                 pass
@@ -37,7 +38,9 @@ for i in range(5):
             append_index += 100
             
 def scroll_detect_index():
-    global scroll_lock, append_index
+    global scroll_lock, append_index, enable_led
+    
+    enable_led = 1
 
     append_index = keyboards.maximum_led
 
@@ -48,7 +51,7 @@ def scroll_detect_index():
 
     for i in range(5):
         for i in range(append_index):
-            detect = os.system(f" sh -c 'echo {enable_led} > /sys/class/leds/input{i}::scrolllock/brightness'")
+            detect = os.system(f" sh -c 'echo 1 > /sys/class/leds/input{i}::scrolllock/brightness'")
             if detect == 0:
                 if i in scroll_lock:
                     pass
@@ -57,6 +60,7 @@ def scroll_detect_index():
             else:
                 continue
         if len(scroll_lock) == keyboards.indexes:
+            reload(kek)
             break
         else:
             if append_index == keyboards.maximum_led:
@@ -90,8 +94,6 @@ kek.on_press(on_key_press)
 
 while True:
     for i in scroll_lock:
-
-        if enable_led == 1:
             detect_scroll = os.system(f" sh -c 'echo {enable_led} > /sys/class/leds/input{i}::scrolllock/brightness'")
 
             if detect_scroll == 0:
@@ -104,5 +106,3 @@ while True:
             else:
                 scroll_lock.remove(i)
                 print(scroll_lock)
-        elif enable_led == 0:
-            pass
