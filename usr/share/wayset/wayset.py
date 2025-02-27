@@ -65,18 +65,8 @@ def scroll_detect_index():
                 append_index += 100
 
 def toggle_led_pown():
-    detect_scroll = os.system(f" sh -c 'echo {enable_led} > /sys/class/leds/input{i}::scrolllock/brightness'")
-
-    if detect_scroll == 0:
-        print(f'{i} = {detect_scroll}')
-
-        if len(scroll_lock) == keyboards.indexes:
-            pass
-        else:
-            scroll_detect_index()
-    else:
-        scroll_lock.remove(i)
-        print(scroll_lock)
+    for i in scroll_lock:
+        detect_scroll = os.system(f" sh -c 'echo {enable_led} > /sys/class/leds/input{i}::scrolllock/brightness'")
 
 def on_key_press(event):
     global toggle_key, enable_led
