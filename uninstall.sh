@@ -1,6 +1,10 @@
 #!/bin/bash
 
+echo "Stopping Wayset"
+
 sudo systemctl stop wayset
+
+echo "Uninstalling Wayset"
 
 sudo rm /usr/local/bin/wayset
 sudo rm -r /usr/share/wayset
