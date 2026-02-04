@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Stopping worked Wayset, if programm is installed"
+echo "Stopping worked Wayset, if program is installed"
 
 sudo systemctl stop wayset
 
@@ -15,10 +15,11 @@ echo "Install Wayset"
 
 sudo cp wayset /usr/local/bin/wayset
 sudo cp -r usr /
+mkdir ~/.local/share/applications
 cp wayset.desktop ~/.local/share/applications/wayset.desktop
 
 sudo cp wayset.service /etc/systemd/system/wayset.service
-sudo chmod 777  /etc/systemd/system/wayset.service
+sudo chmod 777 /etc/systemd/system/wayset.service
 
 echo "Start Wayset"
 
